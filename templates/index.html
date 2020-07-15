@@ -1,99 +1,119 @@
 <!DOCTYPE html>
-
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Score Predictor</title>
-        <link rel="stylesheet" href="mystyle.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>IPL Score Predictor</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
         <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body >
-
-        <!-- Website Title -->
-        <header class="text-gray-700 shadow-lg body-font bg-secondary text-white">
-          <div class="container mx-auto flex flex-wrap p-4 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-              
-              <span class="ml-3 text-sm hover:text-gray-900">SHUBHAM DUBILE</span>
-            </a>
-            
-            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-              
-              <h1 class="mr-5 hover:text-gray-900">IPl SCORE PREDICTOR</h1>
-              
-            </nav>
-            
-          </div>
-        </header>
-
-        <!-- Prediction Area -->
-        <div class="prediction-area container-fluid">
-
-            
-            <!-- Prediction Form -->
-            <div class='div2 text-center container p-4 ml-3 text-xl hover:text-gray-900'>
-                <form action="{{ url_for('predict') }}" method="POST">
-                    <!-- Batting Team Dropdown -->
-                    <select class="form-input align-center rounded-pill border border-danger" name="batting-team">
-                        <option value="none">--- Select a Batting team ---</option>
-                        <option value="Mumbai Indians">Mumbai Indians</option>
-                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
-                        <option value="Chennai Super Kings">Chennai Super Kings</option>
-                        <option value="Rajasthan Royals">Rajasthan Royals</option>
-                        <option value="Kings XI Punjab">Kings XI Punjab</option>
-                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
-                        <option value="Delhi Daredevils">Delhi Daredevils</option>
-                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
-                    </select><br>
-                    <!-- Bowling Team Dropdown -->
-                    <select class="form-input align-center rounded-pill border border-danger" name="bowling-team">
-                        <option value="none">--- Select a Bowling team ---</option>
-                        <option value="Mumbai Indians">Mumbai Indians</option>
-                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
-                        <option value="Chennai Super Kings">Chennai Super Kings</option>
-                        <option value="Rajasthan Royals">Rajasthan Royals</option>
-                        <option value="Kings XI Punjab">Kings XI Punjab</option>
-                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
-                        <option value="Delhi Daredevils">Delhi Daredevils</option>
-                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
-                    </select><br>
-                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" size="38" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
-                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" size="38" name="runs" placeholder="Runs eg. 64"><br>
-                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="wickets" size="38" placeholder="Wickets eg. 4"><br>
-                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="runs_in_prev_5" size="38" placeholder="Runs scored in previous 5 Overs eg. 42"><br>
-                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="wickets_in_prev_5" placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
-
-			<input type="submit" class="btn btn-primary" value="Predict Score">
-        	</form>
-            </div>
-
-            <!-- IPL Banner - 2 -->
-           
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+    <div class="container">
+        <a href="#" class="navbar-brand mr-3">Shubham Dubile</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>    
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <img src="ipl2.jpeg" alt="Flowers in Chania" width="100%">
+        <!-- <h1>Learn to Create Websites</h1>
+        <p class="lead">In today's world internet is the most popular way of connecting with the people. At <a href="https://www.tutorialrepublic.com" target="_blank">tutorialrepublic.com</a> you will learn the essential web development technologies along with real life practice examples, so that you can create your own website to connect with the people around the world.</p>
+        <p><a href="https://www.tutorialrepublic.com" target="_blank" class="btn btn-success btn-lg">Get started today</a></p> -->
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <!-- <h2></h2> -->
+            <img src="ipl.jpeg" alt="Flowers in Chania" width="300" height="300">
+            <p></p>
+            <!-- <p><a href="https://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success"></a></p> -->
         </div>
+        <div class="col-md-4 ">
 
-        <!-- Footer -->
-        <footer class="text-gray-700 shadow-sm body-font bg-secondary text-white">
-          <div class="container px-5 py-1 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-             
-            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 text-white">© 2020 First try —
-              <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank"></a>
-            </p>
-            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-              <a target="_blank" href="https://github.com/shubhamdubile"><i class="fab fa-github fa-lg contact-icon ml-3 text-gray-500 hover:text-gray-900 "></i></a>
-              <a target="_blank" href="https://www.linkedin.com/in/shubham-dubile-47a784131/"><i class="fab fa-linkedin fa-lg contact-icon ml-3 text-gray-500 hover:text-gray-900"></i></a>
-            </span>
-          </div>
-        </footer>
-       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+            <form action="{{ url_for('predict') }}" method="POST">
+                <!-- Batting Team Dropdown -->
+                <select class="form-input align-center rounded-pill border border-danger text-center" name="batting-team">
+                    <option value="none">--- Select a Batting team ---</option>
+                    <option value="Mumbai Indians">Mumbai Indians</option>
+                    <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                    <option value="Chennai Super Kings">Chennai Super Kings</option>
+                    <option value="Rajasthan Royals">Rajasthan Royals</option>
+                    <option value="Kings XI Punjab">Kings XI Punjab</option>
+                    <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                    <option value="Delhi Daredevils">Delhi Daredevils</option>
+                    <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                </select><br>
+                <!-- Bowling Team Dropdown -->
+                <select class="form-input align-center rounded-pill border border-danger text-center" name="bowling-team">
+                    <option value="none">--- Select a Bowling team ---</option>
+                    <option value="Mumbai Indians">Mumbai Indians</option>
+                    <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                    <option value="Chennai Super Kings">Chennai Super Kings</option>
+                    <option value="Rajasthan Royals">Rajasthan Royals</option>
+                    <option value="Kings XI Punjab">Kings XI Punjab</option>
+                    <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                    <option value="Delhi Daredevils">Delhi Daredevils</option>
+                    <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                </select><br>
+                <input class="form-input border border-danger text-center p-2 t-2 rounded-pill border border-danger" type="text" size="38" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
+                <input class="form-input border border-danger text-center p-2 t-2 rounded-pill border border-danger" type="text" size="38" name="runs" placeholder="Runs eg. 64"><br>
+                <input class="form-input border border-danger p-2 t-2  text-center rounded-pill  border border-danger" type="text" name="wickets" size="38" placeholder="Wickets eg. 4"><br>
+                <input class="form-input border border-danger p-2 t-2 text-center rounded-pill border border-danger" type="text" name="runs_in_prev_5" size="38" placeholder="Runs scored in previous 5 Overs eg. 42"><br>
+                <input class="form-input border border-danger p-2 t-2 text-center rounded-pill border border-danger" type="text" name="wickets_in_prev_5" size="38" placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
 
-    </body>
+                   <input type="submit" class="btn btn-primary" value="Predict Score">
+             </form>
+
+
+
+            <!-- <h2>CSS</h2>
+            <p>CSS is used for describing the presentation of web pages. CSS can save a lot of time and effort. Our CSS tutorials will help you to learn the essentials of latest CSS3, so that you can control the style and layout of your website.</p>
+            <p><a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank" class="btn btn-success">Learn More &raquo;</a></p> -->
+        </div>
+        <div class="col-md-4">
+            <!-- <h2></h2> -->
+            <img src="ipl.jpeg" alt="Flowers in Chania" width="300" height="300">
+            <p></p>
+            <!-- <p><a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success"></a></p> -->
+        </div>
+    </div>
+    <hr>
+    <!-- <footer>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Copyright © 2019 Tutorial Republic</p>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a href="#" class="text-dark">Terms of Use</a> 
+                <span class="text-muted mx-2">|</span> 
+                <a href="#" class="text-dark">Privacy Policy</a>
+            </div>
+        </div>
+    </footer> -->
+    <footer class="text-gray-700 shadow-sm body-font bg-secondary text-white">
+        <div class="container px-5 py-1 mx-auto flex items-center sm:flex-row flex-col">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+           
+          <!-- <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 text-white">© 2020 First try —
+            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank"></a>
+          </p> -->
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a target="_blank" href="https://github.com/shubhamdubile"><i class="fab fa-github fa-lg contact-icon ml-3 text-gray-500 hover:text-gray-900 "></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/shubham-dubile-47a784131/"><i class="fab fa-linkedin fa-lg contact-icon ml-3 text-gray-500 hover:text-gray-900"></i></a>
+          </span>
+        </div>
+      </footer>
+</div>
+</body>
 </html>
