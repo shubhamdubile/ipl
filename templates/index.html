@@ -16,23 +16,31 @@
     <body class="bg-secondary mx-auto">
 
         <!-- Website Title -->
-    	<div class="container-fluid">
+        <header class="text-gray-700 shadow-lg body-font bg-secondary text-white">
+          <div class="container mx-auto flex flex-wrap p-4 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+              
+              <span class="ml-3 text-sm hover:text-gray-900">SHUBHAM DUBILE</span>
+            </a>
             
-            <h2 class='container-heading text-center'><span class='heading_first'> Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
-            <div class='description'>
-    			<p class="text-info text-center">A Machine Learning Web App, Built with Flask, HTML5, Bootstrap5, Deployed using Heroku.</p>
-    		</div>
-    	</div>
+            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+              
+              <h1 class="mr-5 hover:text-gray-900">IPl SCORE PREDICTOR</h1>
+              
+            </nav>
+            
+          </div>
+        </header>
 
         <!-- Prediction Area -->
         <div class="prediction-area container-fluid">
 
             
             <!-- Prediction Form -->
-            <div class='div2 text-center container'>
+            <div class='div2 text-center container p-4 ml-3 text-xl hover:text-gray-900'>
                 <form action="{{ url_for('predict') }}" method="POST">
                     <!-- Batting Team Dropdown -->
-                    <select class="form-input align-center" name="batting-team">
+                    <select class="form-input align-center rounded-pill border border-danger" name="batting-team">
                         <option value="none">--- Select a Batting team ---</option>
                         <option value="Mumbai Indians">Mumbai Indians</option>
                         <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
@@ -44,7 +52,7 @@
                         <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
                     </select><br>
                     <!-- Bowling Team Dropdown -->
-                    <select class="form-input align-center" name="bowling-team">
+                    <select class="form-input align-center rounded-pill border border-danger" name="bowling-team">
                         <option value="none">--- Select a Bowling team ---</option>
                         <option value="Mumbai Indians">Mumbai Indians</option>
                         <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
@@ -55,11 +63,11 @@
                         <option value="Delhi Daredevils">Delhi Daredevils</option>
                         <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
                     </select><br>
-                    <input class="form-input border border-danger" type="text" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
-                    <input class="form-input border border-danger" type="text" name="runs" placeholder="Runs eg. 64"><br>
-                    <input class="form-input border border-danger" type="text" name="wickets" placeholder="Wickets eg. 4"><br>
-                    <input class="form-input border border-danger" type="text" name="runs_in_prev_5" placeholder="Runs scored in previous 5 Overs eg. 42"><br>
-                    <input class="form-input border border-danger" type="text" name="wickets_in_prev_5" placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
+                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
+                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="runs" placeholder="Runs eg. 64"><br>
+                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="wickets" placeholder="Wickets eg. 4"><br>
+                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="runs_in_prev_5" placeholder="Runs scored in previous 5 Overs eg. 42"><br>
+                    <input class="form-input border border-danger p-2 t-2 rounded-pill border border-danger" type="text" name="wickets_in_prev_5" placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
 
 			<input type="submit" class="btn btn-primary" value="Predict Score">
         	</form>
@@ -70,13 +78,19 @@
         </div>
 
         <!-- Footer -->
-       <div class='footer text-center'>
-           <div class="contact">
-               <a target="_blank" href="https://github.com/shubhamdubile"><i class="fab fa-github fa-lg contact-icon"></i></a>
-               <a target="_blank" href="https://www.linkedin.com/in/shubham-dubile-47a784131/"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
-           </div>
-           
-       </div>
+        <footer class="text-gray-700 shadow-sm body-font bg-secondary text-white">
+          <div class="container px-5 py-1 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+             
+            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 text-white">© 2020 First try —
+              <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank"></a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+              <a target="_blank" href="https://github.com/shubhamdubile"><i class="fab fa-github fa-lg contact-icon ml-3 text-gray-500 hover:text-gray-900 "></i></a>
+              <a target="_blank" href="https://www.linkedin.com/in/shubham-dubile-47a784131/"><i class="fab fa-linkedin fa-lg contact-icon ml-3 text-gray-500 hover:text-gray-900"></i></a>
+            </span>
+          </div>
+        </footer>
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
