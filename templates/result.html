@@ -13,11 +13,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     </head>
 
-    <body class="bg-secondary mx-auto">
+    <body class=" mx-auto">
 
         <div class="container">
             <div class="jumbotron">
-                <img src="ipl2.jpeg" alt="Flowers in Chania" width="100%">
+                <img src="{{ url_for('static', filename='ipl2.jpeg') }}" alt="Flowers in Chania" width="100%">
                 <!-- <h1>Learn to Create Websites</h1>
                 <p class="lead">In today's world internet is the most popular way of connecting with the people. At <a href="https://www.tutorialrepublic.com" target="_blank">tutorialrepublic.com</a> you will learn the essential web development technologies along with real life practice examples, so that you can create your own website to connect with the people around the world.</p>
                 <p><a href="https://www.tutorialrepublic.com" target="_blank" class="btn btn-success btn-lg">Get started today</a></p> -->
@@ -25,20 +25,16 @@
             <div class="row">
                 <div class="col-md-4">
                     <!-- <h2></h2> -->
-                    <img src="ipl.jpeg" alt="Flowers in Chania" width="300" height="300">
+                    <img src="{{ url_for('static', filename='ipl.jpeg') }}" alt="Flowers in Chania" width="300" height="300">
                     <p></p>
                     <!-- <p><a href="https://www.tutorialrepublic.com/html-tutorial/" target="_blank" class="btn btn-success"></a></p> -->
                 </div>
                 <div class="col-md-4 ">
                         
-                    <div class="container text-center">
-            
-    <h2 class='container-heading'><span class='heading_first'>First Innings Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
-    <div class='description'>
-        <p class="text-info text-center">A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
-    </div>
-</div>
-                    
+                    <div class="results text-center ">
+                        <p class='result-p font-weight-bolder'><h3 class="text-danger ">The final predicted score (range): {{ lower_limit }} to {{ upper_limit }}</h3></p>
+                    </div>
+        
          
         
         
@@ -48,7 +44,7 @@
                 </div>
                 <div class="col-md-4">
                     <!-- <h2></h2> -->
-                    <img src="ipl.jpeg" alt="Flowers in Chania" width="300" height="300">
+                    <img src="{{ url_for('static', filename='ipl.jpeg') }}" alt="Flowers in Chania" width="300" height="300">
                     <p></p>
                     <!-- <p><a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success"></a></p> -->
                 </div>
@@ -86,3 +82,6 @@
 
     </body>
 </html>
+
+
+
