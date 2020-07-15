@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Score Predictor</title>
+        <link rel="stylesheet" href="mystyle.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="bg-secondary mx-auto">
+
+        <!-- Website Title -->
+    	<div class="container-fluid">
+            
+            <h2 class='container-heading text-center'><span class='heading_first'> Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
+            <div class='description'>
+    			<p class="text-info text-center">A Machine Learning Web App, Built with Flask, HTML5, Bootstrap5, Deployed using Heroku.</p>
+    		</div>
+    	</div>
+
+        <!-- Prediction Area -->
+        <div class="prediction-area container-fluid">
+
+            
+            <!-- Prediction Form -->
+            <div class='div2 text-center container'>
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <!-- Batting Team Dropdown -->
+                    <select class="form-input align-center" name="batting-team">
+                        <option value="none">--- Select a Batting team ---</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Delhi Daredevils">Delhi Daredevils</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                    </select><br>
+                    <!-- Bowling Team Dropdown -->
+                    <select class="form-input align-center" name="bowling-team">
+                        <option value="none">--- Select a Bowling team ---</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Delhi Daredevils">Delhi Daredevils</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                    </select><br>
+                    <input class="form-input border border-danger" type="text" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
+                    <input class="form-input border border-danger" type="text" name="runs" placeholder="Runs eg. 64"><br>
+                    <input class="form-input border border-danger" type="text" name="wickets" placeholder="Wickets eg. 4"><br>
+                    <input class="form-input border border-danger" type="text" name="runs_in_prev_5" placeholder="Runs scored in previous 5 Overs eg. 42"><br>
+                    <input class="form-input border border-danger" type="text" name="wickets_in_prev_5" placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
+
+			<input type="submit" class="btn btn-primary" value="Predict Score">
+        	</form>
+            </div>
+
+            <!-- IPL Banner - 2 -->
+           
+        </div>
+
+        <!-- Footer -->
+       <div class='footer text-center'>
+           <div class="contact">
+               <a target="_blank" href="https://github.com/shubhamdubile"><i class="fab fa-github fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/shubham-dubile-47a784131/"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+           </div>
+           
+       </div>
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    </body>
+</html>
